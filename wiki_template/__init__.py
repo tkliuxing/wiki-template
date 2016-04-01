@@ -9,3 +9,5 @@ class TemplateConfig(AppConfig):
     label = 'wiki_template'
 
 default_app_config = 'wiki_template.TemplateConfig'
+
+__version__ = "0.1"
