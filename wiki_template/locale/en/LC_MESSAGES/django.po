@@ -1,0 +1,398 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-04-01 00:04+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: __init__.py:8
+msgid "Wiki 模板"
+msgstr ""
+
+#: admin.py:21
+msgid "article"
+msgstr ""
+
+#: forms.py:15 templates/wiki_template/revision_add.html.py:22
+msgid "Template title"
+msgstr ""
+
+#: forms.py:18
+msgid ""
+"Use only alphanumeric characters and - or _. Note that you cannot change the "
+"title after creating the template."
+msgstr ""
+
+#: forms.py:23 forms.py:88
+msgid "Extend"
+msgstr ""
+
+#: forms.py:25 forms.py:90 models.py:37
+msgid ""
+"You can extent this template to children articles.They will be able to use "
+"this template without import."
+msgstr ""
+
+#: forms.py:46
+#, python-format
+msgid "A template named \"%s\" already exists."
+msgstr ""
+
+#: forms.py:127
+msgid "Yes I am sure..."
+msgstr ""
+
+#: forms.py:132
+msgid "You are not sure enough!"
+msgstr ""
+
+#: models.py:26
+msgid "current revision"
+msgstr ""
+
+#: models.py:29
+msgid ""
+"The revision of this template currently in use (on all articles using the "
+"template)"
+msgstr ""
+
+#: models.py:34
+msgid "extend to children"
+msgstr ""
+
+#: models.py:58
+msgid "template"
+msgstr ""
+
+#: models.py:59
+msgid "templates"
+msgstr ""
+
+#: models.py:141
+msgid "template content"
+msgstr ""
+
+#: models.py:143
+msgid "Does not support nested template."
+msgstr ""
+
+#: models.py:146
+msgid "description"
+msgstr ""
+
+#: models.py:149
+msgid "template revision"
+msgstr ""
+
+#: models.py:150
+msgid "template revisions"
+msgstr ""
+
+#: templates/wiki_template/delete.html:4 templates/wiki_template/delete.html:9
+msgid "Delete template"
+msgstr ""
+
+#: templates/wiki_template/delete.html:11
+msgid ""
+"\n"
+"    The template may be referenced on other articles. Deleting it means that "
+"they will loose their references to this template. The following articles "
+"reference this template:\n"
+"    "
+msgstr ""
+
+#: templates/wiki_template/delete.html:28
+#: templates/wiki_template/delete.html:52
+#: templates/wiki_template/history.html:51
+#: templates/wiki_template/revision_add.html:33
+#: templates/wiki_template/search.html:83
+#: templates/wiki_template/template_create.html:25
+msgid "Go back"
+msgstr ""
+
+#: templates/wiki_template/delete.html:32
+msgid "Delete it!"
+msgstr ""
+
+#: templates/wiki_template/delete.html:39
+msgid "Remove"
+msgstr ""
+
+#: templates/wiki_template/delete.html:41
+msgid ""
+"\n"
+"    You can remove a reference to a template, but it will retain its "
+"references on other articles.\n"
+"    "
+msgstr ""
+
+#: templates/wiki_template/delete.html:56
+msgid "Remove reference"
+msgstr ""
+
+#: templates/wiki_template/history.html:4
+#: templates/wiki_template/history.html:8
+msgid "History of template"
+msgstr ""
+
+#: templates/wiki_template/history.html:11
+msgid "Version"
+msgstr ""
+
+#: templates/wiki_template/history.html:12
+#: templates/wiki_template/search.html:42
+msgid "Date"
+msgstr ""
+
+#: templates/wiki_template/history.html:13
+msgid "User"
+msgstr ""
+
+#: templates/wiki_template/history.html:14
+msgid "Description"
+msgstr ""
+
+#: templates/wiki_template/history.html:15
+msgid "Markdown text"
+msgstr ""
+
+#: templates/wiki_template/history.html:16
+#: templates/wiki_template/index.html:17 templates/wiki_template/search.html:44
+msgid "Action"
+msgstr ""
+
+#: templates/wiki_template/history.html:23
+#: templates/wiki_template/index.html:33 templates/wiki_template/search.html:57
+msgid "deleted"
+msgstr ""
+
+#: templates/wiki_template/history.html:28
+#: templates/wiki_template/search.html:50
+msgid "<em>No description</em>"
+msgstr ""
+
+#: templates/wiki_template/history.html:37
+msgid "Use this!"
+msgstr ""
+
+#: templates/wiki_template/history.html:42
+msgid "Current version"
+msgstr ""
+
+#: templates/wiki_template/index.html:4 templates/wiki_template/search.html:40
+#: wiki_plugin.py:20 wiki_plugin.py:74
+msgid "Template"
+msgstr ""
+
+#: templates/wiki_template/index.html:9
+msgid ""
+"The following template are available for this article. Copy the markdown tag "
+"to directly refer to a file from the article text."
+msgstr ""
+
+#: templates/wiki_template/index.html:14
+msgid "Markdown tag"
+msgstr ""
+
+#: templates/wiki_template/index.html:15 templates/wiki_template/search.html:43
+msgid "Created by"
+msgstr ""
+
+#: templates/wiki_template/index.html:16
+msgid "Status"
+msgstr ""
+
+#: templates/wiki_template/index.html:40
+msgid "View"
+msgstr ""
+
+#: templates/wiki_template/index.html:42
+msgid "History"
+msgstr ""
+
+#: templates/wiki_template/index.html:44
+msgid "Edit"
+msgstr ""
+
+#: templates/wiki_template/index.html:47
+msgid "Delete"
+msgstr ""
+
+#: templates/wiki_template/index.html:50
+msgid "Detach"
+msgstr ""
+
+#: templates/wiki_template/index.html:54
+msgid "Deleted"
+msgstr ""
+
+#: templates/wiki_template/index.html:62
+msgid "There are no template for this article."
+msgstr ""
+
+#: templates/wiki_template/index.html:72 templates/wiki_template/index.html:81
+msgid "Create new template"
+msgstr ""
+
+#: templates/wiki_template/index.html:91
+msgid "Search and add template"
+msgstr ""
+
+#: templates/wiki_template/index.html:96
+msgid ""
+"You can reuse template from other articles. These templates are subject to "
+"updates on other articles which may or may not be a good thing."
+msgstr ""
+
+#: templates/wiki_template/index.html:115
+msgid "Restore template"
+msgstr ""
+
+#: templates/wiki_template/index.html:126
+msgid "Restore"
+msgstr ""
+
+#: templates/wiki_template/index.html:131
+msgid "Nothing to restore"
+msgstr ""
+
+#: templates/wiki_template/index.html:145
+msgid ""
+"The article is currently locked for editing, and therefore no new template "
+"can be added."
+msgstr ""
+
+#: templates/wiki_template/index.html:161
+msgid "View markdown text"
+msgstr ""
+
+#: templates/wiki_template/index.html:169
+msgid "Close"
+msgstr ""
+
+#: templates/wiki_template/render.html:6
+msgid "This attachment is not permitted on this page."
+msgstr ""
+
+#: templates/wiki_template/render.html:8
+msgid "Click to download"
+msgstr ""
+
+#: templates/wiki_template/revision_add.html:4
+#: templates/wiki_template/template_create.html:4
+msgid "Update template"
+msgstr ""
+
+#: templates/wiki_template/revision_add.html:37
+#: templates/wiki_template/template_create.html:29
+msgid "Preview"
+msgstr ""
+
+#: templates/wiki_template/revision_add.html:41
+#: templates/wiki_template/revision_add.html:63
+#: templates/wiki_template/template_create.html:55
+msgid "Save changes"
+msgstr ""
+
+#: templates/wiki_template/revision_add.html:59
+#: templates/wiki_template/template_create.html:51
+msgid "Back to editor"
+msgstr ""
+
+#: templates/wiki_template/search.html:4
+msgid "Add file to"
+msgstr ""
+
+#: templates/wiki_template/search.html:21
+msgid "Add attachment from other article"
+msgstr ""
+
+#: templates/wiki_template/search.html:30
+msgid "Search templates"
+msgstr ""
+
+#: templates/wiki_template/search.html:41
+msgid "Main article"
+msgstr ""
+
+#: templates/wiki_template/search.html:67
+msgid "Add to article"
+msgstr ""
+
+#: templates/wiki_template/search.html:75
+msgid "Your search did not return any results"
+msgstr ""
+
+#: templates/wiki_template/sidebar.html:2
+msgid "Insert a template"
+msgstr ""
+
+#: templates/wiki_template/sidebar.html:5
+msgid ""
+"Type in something from template title and auto-complete will help you create "
+"a template tag for you article. Tags for template look like this:"
+msgstr ""
+
+#: templates/wiki_template/sidebar.html:14
+msgid "Insert"
+msgstr ""
+
+#: templates/wiki_template/sidebar.html:21
+msgid "Manage template"
+msgstr ""
+
+#: templates/wiki_template/template_create.html:33
+msgid "Save"
+msgstr ""
+
+#: views.py:39
+#, python-format
+msgid "%s was successfully added."
+msgstr ""
+
+#: views.py:124 views.py:152
+#, python-format
+msgid "Preview Template: %s"
+msgstr ""
+
+#: views.py:216
+#, python-format
+msgid "Current revision changed for # %s."
+msgstr ""
+
+#: views.py:262
+#, python-format
+msgid "%(template)s has been saved."
+msgstr ""
+
+#: views.py:289
+#, python-format
+msgid "Added a reference to \"%(template_title)s\" from \"%(article_title)s\"."
+msgstr ""
+
+#: views.py:333
+#, python-format
+msgid "The template %s was deleted."
+msgstr ""
+
+#: views.py:339
+#, python-format
+msgid "This article is no longer related to the template %s."
+msgstr ""
+
+#: wiki_plugin.py:81
+#, python-format
+msgid "A tempalte was changed: %s"
+msgstr ""

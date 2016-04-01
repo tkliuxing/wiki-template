@@ -1,0 +1,411 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-04-01 00:04+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: __init__.py:8
+msgid "Wiki 模板"
+msgstr ""
+
+#: admin.py:21
+#, fuzzy
+#| msgid "Main article"
+msgid "article"
+msgstr "所在文章"
+
+#: forms.py:15 templates/wiki_template/revision_add.html.py:22
+msgid "Template title"
+msgstr "模板标题"
+
+#: forms.py:18
+msgid ""
+"Use only alphanumeric characters and - or _. Note that you cannot change the "
+"title after creating the template."
+msgstr "仅支持数字、字母和‘-’与‘_’。注意！创建之后不能更改标题！"
+
+#: forms.py:23 forms.py:88
+msgid "Extend"
+msgstr "扩充适用范围"
+
+#: forms.py:25 forms.py:90 models.py:37
+msgid ""
+"You can extent this template to children articles.They will be able to use "
+"this template without import."
+msgstr ""
+"你可以扩充这个模板的适用范围到子文章。子文章可不主动引入就能使用这个模板。"
+
+#: forms.py:46
+#, python-format
+msgid "A template named \"%s\" already exists."
+msgstr "模板名称“%s”已经存在。"
+
+#: forms.py:127
+msgid "Yes I am sure..."
+msgstr "确定..."
+
+#: forms.py:132
+msgid "You are not sure enough!"
+msgstr "还不确定！"
+
+#: models.py:26
+msgid "current revision"
+msgstr "当前版本"
+
+#: models.py:29
+msgid ""
+"The revision of this template currently in use (on all articles using the "
+"template)"
+msgstr "目前使用该模板的修订 (在所有使用此模板的文章中)"
+
+#: models.py:34
+msgid "extend to children"
+msgstr "推广到子文章"
+
+#: models.py:58
+msgid "template"
+msgstr "模板"
+
+#: models.py:59
+msgid "templates"
+msgstr "模板"
+
+#: models.py:141
+msgid "template content"
+msgstr "模板内容"
+
+#: models.py:143
+msgid "Does not support nested template."
+msgstr "不支持模板的嵌套使用"
+
+#: models.py:146
+msgid "description"
+msgstr "描述"
+
+#: models.py:149
+msgid "template revision"
+msgstr "模板修订记录"
+
+#: models.py:150
+msgid "template revisions"
+msgstr "模板修订记录"
+
+#: templates/wiki_template/delete.html:4 templates/wiki_template/delete.html:9
+msgid "Delete template"
+msgstr "删除模板"
+
+#: templates/wiki_template/delete.html:11
+msgid ""
+"\n"
+"    The template may be referenced on other articles. Deleting it means that "
+"they will loose their references to this template. The following articles "
+"reference this template:\n"
+"    "
+msgstr ""
+"\n"
+"    这个模板可能是从其它文章引用过来的。删除它意味着其他使用了此模板的文章丢"
+"失了模板。以下的文章引用了这个模板:\n"
+"    "
+
+#: templates/wiki_template/delete.html:28
+#: templates/wiki_template/delete.html:52
+#: templates/wiki_template/history.html:51
+#: templates/wiki_template/revision_add.html:33
+#: templates/wiki_template/search.html:83
+#: templates/wiki_template/template_create.html:25
+msgid "Go back"
+msgstr "返回"
+
+#: templates/wiki_template/delete.html:32
+msgid "Delete it!"
+msgstr "删除！"
+
+#: templates/wiki_template/delete.html:39
+msgid "Remove"
+msgstr "移除"
+
+#: templates/wiki_template/delete.html:41
+msgid ""
+"\n"
+"    You can remove a reference to a template, but it will retain its "
+"references on other articles.\n"
+"    "
+msgstr ""
+"\n"
+"    可以移除对这个模板的关联，但是其他文章会保留对这个模板的关联。\n"
+"    "
+
+#: templates/wiki_template/delete.html:56
+msgid "Remove reference"
+msgstr "移除关联"
+
+#: templates/wiki_template/history.html:4
+#: templates/wiki_template/history.html:8
+msgid "History of template"
+msgstr "模板修订历史"
+
+#: templates/wiki_template/history.html:11
+msgid "Version"
+msgstr "版本"
+
+#: templates/wiki_template/history.html:12
+#: templates/wiki_template/search.html:42
+msgid "Date"
+msgstr "日期"
+
+#: templates/wiki_template/history.html:13
+msgid "User"
+msgstr "用户"
+
+#: templates/wiki_template/history.html:14
+msgid "Description"
+msgstr "描述"
+
+#: templates/wiki_template/history.html:15
+msgid "Markdown text"
+msgstr "Markdown 文本"
+
+#: templates/wiki_template/history.html:16
+#: templates/wiki_template/index.html:17 templates/wiki_template/search.html:44
+msgid "Action"
+msgstr "动作"
+
+#: templates/wiki_template/history.html:23
+#: templates/wiki_template/index.html:33 templates/wiki_template/search.html:57
+msgid "deleted"
+msgstr "已删除"
+
+#: templates/wiki_template/history.html:28
+#: templates/wiki_template/search.html:50
+msgid "<em>No description</em>"
+msgstr "<em>无描述</em>"
+
+#: templates/wiki_template/history.html:37
+msgid "Use this!"
+msgstr "使用这个！"
+
+#: templates/wiki_template/history.html:42
+msgid "Current version"
+msgstr "当前版本"
+
+#: templates/wiki_template/index.html:4 templates/wiki_template/search.html:40
+#: wiki_plugin.py:20 wiki_plugin.py:74
+msgid "Template"
+msgstr "模板"
+
+#: templates/wiki_template/index.html:9
+msgid ""
+"The following template are available for this article. Copy the markdown tag "
+"to directly refer to a file from the article text."
+msgstr "此文章可以使用以下模板。 拷贝 Markdown 标签到文章中使用。"
+
+#: templates/wiki_template/index.html:14
+msgid "Markdown tag"
+msgstr "Markdown 标签"
+
+#: templates/wiki_template/index.html:15 templates/wiki_template/search.html:43
+msgid "Created by"
+msgstr "创建者"
+
+#: templates/wiki_template/index.html:16
+msgid "Status"
+msgstr "状态"
+
+#: templates/wiki_template/index.html:40
+msgid "View"
+msgstr "查看"
+
+#: templates/wiki_template/index.html:42
+msgid "History"
+msgstr "历史"
+
+#: templates/wiki_template/index.html:44
+msgid "Edit"
+msgstr "编辑"
+
+#: templates/wiki_template/index.html:47
+msgid "Delete"
+msgstr "删除"
+
+#: templates/wiki_template/index.html:50
+msgid "Detach"
+msgstr "脱离"
+
+#: templates/wiki_template/index.html:54
+msgid "Deleted"
+msgstr "已删除"
+
+#: templates/wiki_template/index.html:62
+msgid "There are no template for this article."
+msgstr "此文章没有可用模板"
+
+#: templates/wiki_template/index.html:72 templates/wiki_template/index.html:81
+msgid "Create new template"
+msgstr "创建模板"
+
+#: templates/wiki_template/index.html:91
+msgid "Search and add template"
+msgstr "搜索并引入模板"
+
+#: templates/wiki_template/index.html:96
+msgid ""
+"You can reuse template from other articles. These templates are subject to "
+"updates on other articles which may or may not be a good thing."
+msgstr "可以从其他文章引入模板。当引入的他人模板将导致同步修改和删除。"
+
+#: templates/wiki_template/index.html:115
+msgid "Restore template"
+msgstr "恢复模板"
+
+#: templates/wiki_template/index.html:126
+msgid "Restore"
+msgstr "恢复"
+
+#: templates/wiki_template/index.html:131
+msgid "Nothing to restore"
+msgstr "没有可恢复的"
+
+#: templates/wiki_template/index.html:145
+msgid ""
+"The article is currently locked for editing, and therefore no new template "
+"can be added."
+msgstr "文章已经被锁定，不能添加模板。"
+
+#: templates/wiki_template/index.html:161
+msgid "View markdown text"
+msgstr "查看 Markdown 文本"
+
+#: templates/wiki_template/index.html:169
+msgid "Close"
+msgstr "关闭"
+
+#: templates/wiki_template/render.html:6
+msgid "This attachment is not permitted on this page."
+msgstr "这个页面不允许附件。"
+
+#: templates/wiki_template/render.html:8
+msgid "Click to download"
+msgstr "下载"
+
+#: templates/wiki_template/revision_add.html:4
+#: templates/wiki_template/template_create.html:4
+msgid "Update template"
+msgstr "更新模板"
+
+#: templates/wiki_template/revision_add.html:37
+#: templates/wiki_template/template_create.html:29
+msgid "Preview"
+msgstr "预览"
+
+#: templates/wiki_template/revision_add.html:41
+#: templates/wiki_template/revision_add.html:63
+#: templates/wiki_template/template_create.html:55
+msgid "Save changes"
+msgstr "保存"
+
+#: templates/wiki_template/revision_add.html:59
+#: templates/wiki_template/template_create.html:51
+msgid "Back to editor"
+msgstr "回到编辑界面"
+
+#: templates/wiki_template/search.html:4
+msgid "Add file to"
+msgstr "添加文件到"
+
+#: templates/wiki_template/search.html:21
+msgid "Add attachment from other article"
+msgstr ""
+
+#: templates/wiki_template/search.html:30
+msgid "Search templates"
+msgstr "搜索模板"
+
+#: templates/wiki_template/search.html:41
+msgid "Main article"
+msgstr "所在文章"
+
+#: templates/wiki_template/search.html:67
+msgid "Add to article"
+msgstr "添加到文章"
+
+#: templates/wiki_template/search.html:75
+msgid "Your search did not return any results"
+msgstr "没有搜索结果"
+
+#: templates/wiki_template/sidebar.html:2
+msgid "Insert a template"
+msgstr "插入模板"
+
+#: templates/wiki_template/sidebar.html:5
+msgid ""
+"Type in something from template title and auto-complete will help you create "
+"a template tag for you article. Tags for template look like this:"
+msgstr "根据模板标题自动补全您的输入。模板标签类似于："
+
+#: templates/wiki_template/sidebar.html:14
+msgid "Insert"
+msgstr "插入"
+
+#: templates/wiki_template/sidebar.html:21
+msgid "Manage template"
+msgstr "管理模板"
+
+#: templates/wiki_template/template_create.html:33
+msgid "Save"
+msgstr "保存"
+
+#: views.py:39
+#, python-format
+msgid "%s was successfully added."
+msgstr "%s 添加成功成功"
+
+#: views.py:124 views.py:152
+#, python-format
+msgid "Preview Template: %s"
+msgstr "预览模板：%s"
+
+#: views.py:216
+#, python-format
+msgid "Current revision changed for # %s."
+msgstr "当前修订 # %s 创建成功。"
+
+#: views.py:262
+#, python-format
+msgid "%(template)s has been saved."
+msgstr "%(template)s 保存成功"
+
+#: views.py:289
+#, python-format
+msgid "Added a reference to \"%(template_title)s\" from \"%(article_title)s\"."
+msgstr "从 \"%(article_title)s\" 添加了 \"%(template_title)s\" 的关联。"
+
+#: views.py:333
+#, python-format
+msgid "The template %s was deleted."
+msgstr "%s 模板被删除了。"
+
+#: views.py:339
+#, python-format
+msgid "This article is no longer related to the template %s."
+msgstr "这篇文章不在关联 %s 模板。"
+
+#: wiki_plugin.py:81
+#, python-format
+msgid "A tempalte was changed: %s"
+msgstr "修改了模板：%s"
+
+#~ msgid "extend"
+#~ msgstr "扩充"
