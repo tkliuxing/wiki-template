@@ -1,0 +1,3 @@
+include README.rst
+include setup.cfg
+recursive-include wiki_template *.html *.txt *.png *.js *.css *.gif *.less *.mo *.po *.otf *.svg *.woff *.eot *.ttf

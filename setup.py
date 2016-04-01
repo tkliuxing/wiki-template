@@ -11,13 +11,14 @@ setup(
     name="wiki-template",
     version=__version__,
     description="A django-wiki plugin that MediaWiki style template implemented.",
-    url="http://github.com/tkliuxing/wiki-template"
+    url="https://github.com/tkliuxing/wiki-template",
     license="GPLv3",
     author="Ronald White",
     packages=find_packages(),
+    include_package_data=True,
     long_description=long_description,
     zip_safe=False,
-    keywords="wiki template",
+    keywords=["wiki", "template"],
     install_requires=[
         "wiki>=0.1",
     ],
