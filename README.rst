@@ -7,7 +7,7 @@ a project from 2009 that aimed to be a base system for a wiki.
 Template Plugin
 ****************
 
-**NEED TO TRANSLATE**
+[**NEED TO TRANSLATE**]
 
 模板插件类似于 MediaWiki 的模板，通过定义模板可在多个文章中使用。
 
@@ -21,6 +21,7 @@ Settings
 --------
 
 Insert "wiki_template" to ``INSTALLED_APPS`` before "wiki.plugins.*"::
+
     INSTALLED_APPS = (
         'django.contrib.admin',
         'django.contrib.auth',
@@ -44,7 +45,7 @@ Insert "wiki_template" to ``INSTALLED_APPS`` before "wiki.plugins.*"::
         'mptt',
     )
 
-**NEED TO TRANSLATE**
+[**NEED TO TRANSLATE**]
 
 设置 ``WIKI_MARKDOWN_KWARGS`` 配置项的 "safe_mode" 键为 ``False``，这样可以在文章和模板中使用html标签::
 
@@ -54,3 +55,9 @@ Insert "wiki_template" to ``INSTALLED_APPS`` before "wiki.plugins.*"::
         #],
         "safe_mode": False,
     }
+
+
+Bug report
+**********
+
+Any issues report to `Github <https://github.com/tkliuxing/wiki-template/issues>`_.
