@@ -13,7 +13,6 @@ class TemplateExtension(markdown.Extension):
 
     def extendMarkdown(self, md, md_globals):
         """ Insert TemplatePreprocessor before ReferencePreprocessor. """
-        print(md.preprocessors)
         md.preprocessors.add(
             'dw-template',
             TemplatePreprocessor(md),
