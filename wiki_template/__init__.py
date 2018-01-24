@@ -10,4 +10,4 @@ class TemplateConfig(AppConfig):
 
 default_app_config = 'wiki_template.TemplateConfig'
 
-__version__ = "0.1"
+__version__ = "0.2"
