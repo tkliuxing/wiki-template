@@ -43,7 +43,7 @@
 					{% if template|can_write:user %}
 						<a class="btn btn-success btn-small" href="{% url 'wiki:template_add_revision' path=template.article.urlpath_set.all.0.path article_id=template.article.id template_id=template.id %}">{% trans "Edit" %}</a>
 						{% if not template.current_revision.deleted %}
-							{% if template.article = article %}
+							{% if template.article == article %}
 								<a href="{% url 'wiki:template_delete' path=urlpath.path article_id=article.id template_id=template.id %}" class="btn btn-danger btn-small">{% trans "Delete" %}</a>
 							{% else %}
 								{% if not template.extend_to_children %}

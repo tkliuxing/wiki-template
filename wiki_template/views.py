@@ -12,7 +12,8 @@ from django.views.generic.list import ListView
 
 from wiki import editors
 from wiki.conf import settings as wiki_settings
-from wiki.decorators import json_view, get_article, response_forbidden
+from wiki.decorators import get_article, response_forbidden
+from wiki.core.utils import object_to_json_response
 from wiki.views.mixins import ArticleMixin
 
 from . import models, settings, forms
@@ -237,7 +238,7 @@ class RevisionAddView(ArticleMixin, FormView):
         )
         if not self.template.can_write(request.user):
             return redirect(wiki_settings.LOGIN_URL)
-        return ArticleMixin.dispatch(self, request, article, *args, **kwargs)
+        return super(RevisionAddView, self).dispatch(request, article, *args, **kwargs)
 
     def get_form_kwargs(self, **kwargs):
         kwargs = super(RevisionAddView, self).get_form_kwargs(**kwargs)
@@ -250,6 +251,8 @@ class RevisionAddView(ArticleMixin, FormView):
 
     def get_context_data(self, **kwargs):
         kwargs = super(RevisionAddView, self).get_context_data(**kwargs)
+        if 'form' not in kwargs:
+            kwargs['form'] = self.get_form()
         kwargs['template'] = self.template
         kwargs['editor'] = editors.getEditor()
         kwargs['selected_tab'] = 'template'
@@ -389,7 +392,6 @@ class TemplateSearchView(ArticleMixin, ListView):
 
 class QueryTitle(View):
 
-    @method_decorator(json_view)
     @method_decorator(get_article(can_read=True))
     def dispatch(self, request, article, *args, **kwargs):
         max_num = kwargs.pop('max_num', 20)
@@ -403,6 +405,6 @@ class QueryTitle(View):
                 article__current_revision__deleted=False,
             )
             # matches = matches.select_related_common()
-            return [m.md_tag for m in matches[:max_num]]
+            return object_to_json_response([m.md_tag for m in matches[:max_num]])
 
-        return []
+        return object_to_json_response([])

@@ -102,7 +102,6 @@ class Template(ReusablePlugin):
 
     @property
     def md_vals(self):
-        from functools import reduce
         from six import text_type
         content = self.current_revision.template_content
         vals = []
@@ -113,16 +112,14 @@ class Template(ReusablePlugin):
                 li = li.replace("{{{%s}}}" % sss, "")
                 vals.append(sss)
         vals.sort()
-        number_val = map(int, filter(lambda x: x.isdigit(), vals))
+        number_val = list(map(int, filter(lambda x: x.isdigit(), vals)))
         if number_val:
-            max_num_val = reduce(lambda x, y: max(x, y), number_val)
-            num_vals = "|" + \
-                "|".join(map(lambda x: text_type(x), range(max_num_val+1)))
+            max_num_val = max(number_val)
+            num_vals = "|" + "|".join(map(lambda x: text_type(x), range(max_num_val + 1)))
         else:
             num_vals = ""
-        named_val = filter(lambda x: not x.isdigit(), vals)
-        named_val = "|".join(map(lambda x: x+"=", named_val))
-        named_val = "|"+named_val if named_val else ""
+        named_val = "|".join(map(lambda x: x + "=", filter(lambda x: not x.isdigit(), vals)))
+        named_val = "|" + named_val if named_val else ""
         return "%(num_vals)s%(named_val)s" % {
             "num_vals": num_vals,
             "named_val": named_val,
@@ -185,10 +182,12 @@ class TemplateRevision(BaseRevisionMixin, models.Model):
             article.clear_cache()
 
     def __unicode__(self):
-        return "%s: %s (r%d@%s)" % (self.template.article.current_revision.title,
-                                 self.template.template_title,
-                                 self.revision_number,
-                                 self.modified.date())
+        return "%s: %s (r%d@%s)" % (
+            self.template.article.current_revision.title,
+            self.template.template_title,
+            self.revision_number,
+            self.modified.date()
+        )
 
     def __str__(self):
         return self.__unicode__()

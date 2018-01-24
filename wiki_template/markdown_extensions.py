@@ -16,7 +16,7 @@ class TemplateExtension(markdown.Extension):
         md.preprocessors.add(
             'dw-template',
             TemplatePreprocessor(md),
-            '<html_block'
+            '>html_block'
         )
 
 
@@ -70,9 +70,7 @@ class TemplatePreprocessor(markdown.preprocessors.Preprocessor):
         block_template_lines = []
         block_template_on = False
         for line in lines:
-            matched = False
-            if (line.startswith("```") or line.startswith("~~~")
-                    and not fenced_code_block):
+            if (line.startswith("```") or line.startswith("~~~") and not fenced_code_block):
                 new_text.append(line)
                 fenced_code_block = True
                 continue
@@ -83,7 +81,7 @@ class TemplatePreprocessor(markdown.preprocessors.Preprocessor):
             if fenced_code_block:
                 new_text.append(line)
                 continue
-            if line.startswith("{{") and not "}}" in line and not block_template_on:
+            if line.startswith("{{") and "}}" not in line and not block_template_on:
                 block_template_lines.append(line)
                 block_template_on = True
                 continue
@@ -96,8 +94,10 @@ class TemplatePreprocessor(markdown.preprocessors.Preprocessor):
                 else:
                     continue
             m = re.match(RE_TEXT, line)
-            while m:
+            matched = False
+            if m:
                 matched = True
+            while m:
                 template_tag = re.findall(RE_TEXT, line)[0][1]
                 # if "{{" or "}}" in content, replace it!
                 # cause may template content has "{{" or "}}",
@@ -119,8 +119,7 @@ class TemplatePreprocessor(markdown.preprocessors.Preprocessor):
             ).replace(
                 "\u0018+\u0018", "}}"
             )
-            # Doesn't support mixed markdown and html
-            # if matched and ("</" in line or "/>" in line):
-            #     line = self.markdown.htmlStash.store(line, safe=True)
+            if matched:
+                line = self.markdown.htmlStash.store(line, safe=True)
             new_text.append(line)
         return new_text
