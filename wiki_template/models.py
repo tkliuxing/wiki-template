@@ -25,6 +25,7 @@ class Template(ReusablePlugin):
         'TemplateRevision',
         verbose_name=_('current revision'),
         blank=True, null=True, related_name='current_set',
+        on_delete=models.CASCADE,
         help_text=_(
             'The revision of this template currently in use (on all articles using the template)'),
     )
@@ -40,7 +41,7 @@ class Template(ReusablePlugin):
     )
 
     def can_write(self, user):
-        if not settings.ANONYMOUS_WRITE and (not user or user.is_anonymous()):
+        if not settings.ANONYMOUS_WRITE and (not user or user.is_anonymous):
             return False
         return self.article.can_write(user)
         # return ReusablePlugin.can_write(self, user)
@@ -133,7 +134,7 @@ class Template(ReusablePlugin):
 
 class TemplateRevision(BaseRevisionMixin, models.Model):
 
-    template = models.ForeignKey('Template')
+    template = models.ForeignKey('Template', on_delete=models.CASCADE)
     template_content = models.TextField(
         verbose_name=_('template content'),
         blank=True,

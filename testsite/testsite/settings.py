@@ -2,16 +2,18 @@
 Django settings for testsite project.
 
 For more information on this file, see
-https://docs.djangoproject.com/en/1.7/topics/settings/
+https://docs.djangoproject.com/en/1.8/topics/settings/
 
 For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.7/ref/settings/
+https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 from django.utils.translation import ugettext_lazy as _
+from django.urls import reverse_lazy
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -26,70 +28,71 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
-INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.sites',
-    'django.contrib.humanize',
+INSTALLED_APPS = [
+    'django.contrib.humanize.apps.HumanizeConfig',
+    'django.contrib.auth.apps.AuthConfig',
+    'django.contrib.contenttypes.apps.ContentTypesConfig',
+    'django.contrib.sessions.apps.SessionsConfig',
+    'django.contrib.sites.apps.SitesConfig',
+    'django.contrib.messages.apps.MessagesConfig',
+    'django.contrib.staticfiles.apps.StaticFilesConfig',
+    'django.contrib.admin.apps.AdminConfig',
+    'django.contrib.admindocs.apps.AdminDocsConfig',
     'sekizai',
     'sorl.thumbnail',
-    'django_nyt',
-    'wiki',
-    'wiki.plugins.macros',
-    'wiki.plugins.help',
-    # 'wiki.plugins.links',
-    'wiki.plugins.images',
-    'wiki.plugins.attachments',
-    'wiki.plugins.notifications',
-    'wiki_template',
+    "django_nyt.apps.DjangoNytConfig",
+    "wiki.apps.WikiConfig",
+    "wiki.plugins.macros.apps.MacrosConfig",
+    'wiki.plugins.help.apps.HelpConfig',
+    'wiki.plugins.links.apps.LinksConfig',
+    "wiki.plugins.images.apps.ImagesConfig",
+    "wiki.plugins.attachments.apps.AttachmentsConfig",
+    "wiki.plugins.notifications.apps.NotificationsConfig",
+    'wiki.plugins.globalhistory.apps.GlobalHistoryConfig',
+    'wiki.plugins.redlinks.apps.RedlinksConfig',
+    'wiki_template.apps.WikiTemplateConfig',
     'mptt',
-)
-# Django 1.7:
-# MIDDLEWARE_CLASSES = (
-#     'django.contrib.sessions.middleware.SessionMiddleware',
-#     'django.middleware.common.CommonMiddleware',
-#     'django.middleware.csrf.CsrfViewMiddleware',
-#     'django.contrib.auth.middleware.AuthenticationMiddleware',
-#     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-#     'django.contrib.messages.middleware.MessageMiddleware',
-#     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-# )
+]
 
-MIDDLEWARE_CLASSES = (
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+
+MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
+    'django.middleware.security.SecurityMiddleware',
+]
 
 ROOT_URLCONF = 'testsite.urls'
 
 WSGI_APPLICATION = 'testsite.wsgi.application'
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    "django.core.context_processors.request",
-    "django.core.context_processors.static",
-    "django.core.context_processors.tz",
-    "django.contrib.messages.context_processors.messages",
-    "sekizai.context_processors.sekizai",
-)
-
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'testsite/templates'),
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(PROJECT_DIR, 'templates'),
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                "django.contrib.auth.context_processors.auth",
+                "django.template.context_processors.debug",
+                "django.template.context_processors.i18n",
+                "django.template.context_processors.request",
+                "django.template.context_processors.tz",
+                "django.contrib.messages.context_processors.messages",
+                "sekizai.context_processors.sekizai",
+            ],
+            'debug': DEBUG,
+        },
+    },
+]
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -101,15 +104,29 @@ DATABASES = {
     }
 }
 
-from django.core.urlresolvers import reverse_lazy
 LOGIN_REDIRECT_URL = reverse_lazy('wiki:get', kwargs={'path': ''})
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
 
 SITE_ID = 1
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'zh-cn'
+LANGUAGE_CODE = 'zh-hans'
 
 TIME_ZONE = 'Asia/Shanghai'
 
@@ -130,29 +147,21 @@ STATICFILES_DIRS = (
 )
 
 STATIC_URL = '/static/'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
 MEDIA_URL = '/media/'
 
-WIKI_PLUGINS_METHODS = ('news_list', 'article_list', 'toc', 'wikilink',)
+WIKI_MARKDOWN_HTML_WHITELIST = [
+    'center', 'style', 'div'
+]
 
-WIKI_MARKDOWN_KWARGS = {
-    'extensions': [
-        # 'wikilinks',
-        'codehilite',
-        'footnotes',
-        'attr_list',
-        'headerid',
-        'meta',
-        'toc',
-        'tables',
-        'extra',
-    ],
-    "safe_mode": False,
-    'extension_configs': {'toc': {'title': _('Table of Contents')}, 'headerid': {'forceid': True}, },
+WIKI_MARKDOWN_HTML_ATTRIBUTES = {
+    '*': ['style']
 }
+
+WIKI_MARKDOWN_HTML_STYLES = [
+    'padding', 'width', 'color', 'float', 'clear', 'background'
+]
 
 WIKI_ANONYMOUS = True
 WIKI_ACCOUNT_SIGNUP_ALLOWED = False

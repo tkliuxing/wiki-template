@@ -29,7 +29,7 @@ class TemplateCreateView(ArticleMixin, FormView):
         return super(TemplateCreateView, self).dispatch(request, article, *args, **kwargs)
 
     def form_valid(self, form):
-        if (self.request.user.is_anonymous() and
+        if (self.request.user.is_anonymous and
                 not settings.ANONYMOUS or
                 not self.article.can_write(self.request.user) or
                 self.article.current_revision.locked):
@@ -81,8 +81,7 @@ class TemplateView(ArticleMixin, DjTemplateView):
             articles=self.article, current_revision__deleted=True)
         kwargs['search_form'] = forms.SearchForm()
         kwargs['selected_tab'] = 'template'
-        kwargs['anonymous_disallowed'] = self.request.user.is_anonymous(
-        ) and not settings.ANONYMOUS_CREATE
+        kwargs['anonymous_disallowed'] = self.request.user.is_anonymous and not settings.ANONYMOUS_CREATE
         return super(TemplateView, self).get_context_data(**kwargs)
 
 
