@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wiki-template"
+dynamic = ["version"]
+description = "A django-wiki plugin that implements MediaWiki style templates."
+readme = "README.rst"
+requires-python = ">=3.7"
+license = { text = "GPL-3.0-or-later" }
+authors = [
+    { name = "Ronald White" },
+]
+keywords = ["wiki", "template", "django", "django-wiki"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 2.0",
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.2",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "wiki>=0.4",
+]
+
+[project.urls]
+Homepage = "https://github.com/tkliuxing/wiki-template"
+Repository = "https://github.com/tkliuxing/wiki-template"
+Issues = "https://github.com/tkliuxing/wiki-template/issues"
+
+[tool.setuptools.dynamic]
+version = { attr = "wiki_template.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["wiki_template*"]
+exclude = ["testsite*", "tests*"]
+
+[tool.setuptools.package-data]
+wiki_template = [
+    "templates/**/*.html",
+    "templates/**/*.txt",
+    "static/**/*",
+    "locale/**/*.po",
+    "locale/**/*.mo",
+]
