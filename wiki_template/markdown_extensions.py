@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-from __future__ import absolute_import
 import markdown
 import re
 
@@ -11,12 +9,12 @@ TEMPLATE_RE = r"((?:.* )?){{(?P<title>(?:%s)(?:\|[^}]+)*)}}((?: .+)|$)"
 
 class TemplateExtension(markdown.Extension):
 
-    def extendMarkdown(self, md, md_globals):
-        """ Insert TemplatePreprocessor before ReferencePreprocessor. """
-        md.preprocessors.add(
-            'dw-template',
+    def extendMarkdown(self, md):
+        """ Insert TemplatePreprocessor after html_block. """
+        md.preprocessors.register(
             TemplatePreprocessor(md),
-            '>html_block'
+            'dw-template',
+            19,
         )
 
 
@@ -25,7 +23,7 @@ class TemplatePreprocessor(markdown.preprocessors.Preprocessor):
     def run(self, lines):
         new_text = []
         template_cache = dict(
-            Template.get_by_article(self.markdown.article).values_list(
+            Template.get_by_article(self.md.article).values_list(
                 'template_title',
                 'current_revision__template_content'
             )
@@ -120,6 +118,6 @@ class TemplatePreprocessor(markdown.preprocessors.Preprocessor):
                 "\u0018+\u0018", "}}"
             )
             if matched:
-                line = self.markdown.htmlStash.store(line, safe=True)
+                line = self.md.htmlStash.store(line)
             new_text.append(line)
         return new_text

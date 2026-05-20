@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-from __future__ import absolute_import
 from django.contrib import messages
 from django.db.models import Q
 from django.shortcuts import redirect, get_object_or_404
 from django.utils.decorators import method_decorator
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 from django.views.generic.base import View, TemplateView as DjTemplateView
 from django.views.generic.edit import FormView
 from django.views.generic.list import ListView

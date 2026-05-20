@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 # This models.py is modified from the wiki.plugins.attachments.models.
-
-from __future__ import print_function, unicode_literals
-
 import re
 
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.utils.safestring import mark_safe
 
 from . import settings
@@ -103,7 +100,6 @@ class Template(ReusablePlugin):
 
     @property
     def md_vals(self):
-        from six import text_type
         content = self.current_revision.template_content
         vals = []
         RE_TEXT = r'.*{{{(.*?)}}}.*'
@@ -116,7 +112,7 @@ class Template(ReusablePlugin):
         number_val = list(map(int, filter(lambda x: x.isdigit(), vals)))
         if number_val:
             max_num_val = max(number_val)
-            num_vals = "|" + "|".join(map(lambda x: text_type(x), range(max_num_val + 1)))
+            num_vals = "|" + "|".join(map(lambda x: str(x), range(max_num_val + 1)))
         else:
             num_vals = ""
         named_val = "|".join(map(lambda x: x + "=", filter(lambda x: not x.isdigit(), vals)))

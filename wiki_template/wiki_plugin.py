@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
 from __future__ import unicode_literals
-from django.utils.translation import ugettext as _
-from django.conf.urls import url
+from django.utils.translation import gettext as _
+from django.urls import re_path
 from wiki.core.plugins import registry
 from wiki.core.plugins.base import BasePlugin
 from . import settings, models, views
@@ -17,60 +17,60 @@ class TemplatePlugin(BasePlugin):
 
     slug = settings.SLUG
     sidebar = {'headline': _('Template'),
-               'icon_class': 'fa fa-files-o',
+               'icon_class': 'fa fa-clone',
                'template': 'wiki_template/sidebar.html',
                'form_class': None,
                'get_form_kwargs': (lambda a: {})}
     urlpatterns = {
         'article': [
-            url(r'^$',
+            re_path(r'^$',
                 views.TemplateView.as_view(),
                 name='template_index'
             ),
-            url(r'^create/$',
+            re_path(r'^create/$',
                 views.TemplateCreateView.as_view(),
                 name='template_create'
             ),
-            url(r'^search/$',
+            re_path(r'^search/$',
                 views.TemplateSearchView.as_view(),
                 name='template_search'
             ),
-            url(r'^(?P<template_id>\d+)/add/to/article/$',
+            re_path(r'^(?P<template_id>\d+)/add/to/article/$',
                 views.TemplateAddView.as_view(),
                 name='template_add_to_article'
             ),
-            url(r'^history/(?P<template_id>\d+)/$',
+            re_path(r'^history/(?P<template_id>\d+)/$',
                 views.TemplateHistoryView.as_view(),
                 name='template_history'
             ),
-            url(r'^delete/(?P<template_id>\d+)/$',
+            re_path(r'^delete/(?P<template_id>\d+)/$',
                views.TemplateDeleteView.as_view(),
                name='template_delete'
             ),
-            url(r'^change/(?P<template_id>\d+)/revision/(?P<revision_id>\d+)/$',
+            re_path(r'^change/(?P<template_id>\d+)/revision/(?P<revision_id>\d+)/$',
                views.TemplateChangeRevisionView.as_view(),
                name='template_revision_change'
             ),
-            url(r'^json/query-title/$',
+            re_path(r'^json/query-title/$',
                 views.QueryTitle.as_view(),
                 name='template_query_title'
             ),
-            url('^(?P<template_id>\d+)/revision/add/$',
+            re_path('^(?P<template_id>\d+)/revision/add/$',
                 views.RevisionAddView.as_view(),
                 name='template_add_revision'
             ),
-            url('^(?P<template_id>\d+)/revision/add/preview/$',
+            re_path('^(?P<template_id>\d+)/revision/add/preview/$',
                 views.EditPreview.as_view(),
                 name='template_add_revision_preview'
             ),
-            url('^create/preview/$',
+            re_path('^create/preview/$',
                 views.CreatePreview.as_view(),
                 name='template_create_preview'
             ),
         ]
     }
 
-    article_tab = (_('Template'), "fa fa-files-o")
+    article_tab = (_('Template'), "fa fa-clone")
     article_view = views.TemplateView().dispatch
 
     # List of notifications to construct signal handlers for. This
